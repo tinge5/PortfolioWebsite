@@ -100,7 +100,7 @@ function renderProjectGrid(activeId: string) {
           </div>
           <div class="gamer-info">
             <div class="gamer-name-row">
-              <span class="gamer-label">Pit Bear</span>
+              <span class="gamer-label">Turner Inge</span>
               <span class="ultimate-badge">ULTIMATE</span>
             </div>
             <div class="gamer-id-row">
