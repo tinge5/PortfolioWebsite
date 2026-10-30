@@ -1,6 +1,7 @@
 import './style.css'
 import workoutsLogo from './assets/workoutslogo.png'
 import slicesLogo from './assets/sliceslogo.png'
+import pongLogo from './assets/ponglogo.svg'
 import turnerProfile from './assets/turner-profile-alt.png'
 import turnerProfileAlt from './assets/turner-profile.png'
 
@@ -51,6 +52,17 @@ const projects: Project[] = [
     initials: 'SL',
     link: 'https://slicesgame.netlify.app/',
     iconSrc: slicesLogo,
+  },
+  {
+    id: 'pong',
+    title: 'TINGE PONG',
+    accent: '#4dd0ff',
+    tag: 'Arcade',
+    label: 'Retro challenge',
+    subtitle: 'A fully hand-coded Pong-style arcade build created entirely by me using Brython in the browser. I built the gameplay loop, paddle controls, collision logic, score tracking, pause/resume interactions, and restart flow from scratch with custom JavaScript and Python logic running through Brython.',
+    initials: 'PG',
+    link: 'https://tingepong.netlify.app/',
+    iconSrc: pongLogo,
   },
   {
     id: 'workouts2',
