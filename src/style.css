@@ -283,6 +283,13 @@ button {
   box-shadow: 0 14px 20px rgba(0, 0, 0, 0.25);
 }
 
+.github-mark {
+  width: 62%;
+  height: 62%;
+  fill: #f5f7fa;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+}
+
 .game-title {
   color: rgba(239, 244, 249, 0.92);
   font-size: 0.84rem;
