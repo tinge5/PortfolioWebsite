@@ -299,7 +299,7 @@ function renderProjectGrid(activeId: string) {
               <span class="athlete-badge">ATHLETE</span>
               <div class="athlete-copy">
                 <div class="athlete-title">FOOTBALL</div>
-                <p>Competitive edge. Big-play energy. Relentless focus.</p>
+                <p>Teamwork. Leadership. Discipline. Performance under pressure.</p>
               </div>
               <div class="athlete-metrics">
                 <span>POWER</span>
