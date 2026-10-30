@@ -1,5 +1,6 @@
 import './style.css'
 import workoutsLogo from './assets/workoutslogo.png'
+import slicesLogo from './assets/sliceslogo.png'
 import turnerProfile from './assets/turner-profile-alt.png'
 import turnerProfileAlt from './assets/turner-profile.png'
 
@@ -39,6 +40,17 @@ const projects: Project[] = [
     initials: 'LI',
     link: 'https://www.linkedin.com/in/turner-inge-8b45a4369/',
     useLinkedInIcon: true,
+  },
+  {
+    id: 'slices',
+    title: 'SLICES',
+    accent: '#ff9a3d',
+    tag: 'Daily Game',
+    label: 'Daily challenge',
+    subtitle: 'A fast-paced daily challenge game built around quick mini-games like trivia, memory, math, and reaction tests for a fresh streak every day.',
+    initials: 'SL',
+    link: 'https://slicesgame.netlify.app/',
+    iconSrc: slicesLogo,
   },
   {
     id: 'workouts2',
