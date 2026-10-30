@@ -1,4 +1,7 @@
 import './style.css'
+import workoutsLogo from './assets/workoutslogo.png'
+import turnerProfile from './assets/turner-profile-alt.png'
+import turnerProfileAlt from './assets/turner-profile.png'
 
 type Project = {
   id: string
@@ -10,6 +13,8 @@ type Project = {
   initials: string
   link?: string
   useGithubIcon?: boolean
+  useLinkedInIcon?: boolean
+  iconSrc?: string
 }
 
 const projects: Project[] = [
@@ -23,6 +28,28 @@ const projects: Project[] = [
     initials: 'GH',
     link: 'https://github.com/tinge5',
     useGithubIcon: true,
+  },
+  {
+    id: 'linkedin',
+    title: 'LinkedIn',
+    accent: '#0a66c2',
+    tag: 'Professional',
+    label: 'LinkedIn',
+    subtitle: 'Connect with me on LinkedIn to learn more about my background, work, and professional interests.',
+    initials: 'LI',
+    link: 'https://www.linkedin.com/in/turner-inge-8b45a4369/',
+    useLinkedInIcon: true,
+  },
+  {
+    id: 'workouts2',
+    title: 'Workouts 2.0',
+    accent: '#ff7b39',
+    tag: 'Fitness App',
+    label: 'Workout tracking',
+    subtitle: 'A fitness and training app for planning workouts, tracking progress, and staying consistent with personal goals.',
+    initials: 'W2',
+    link: 'https://workouts2-0.onrender.com/',
+    iconSrc: workoutsLogo,
   },
   {
     id: 'halo',
@@ -93,12 +120,28 @@ function renderProjectGrid(activeId: string) {
             <path d="M8 0C3.58 0 0 3.58 0 8a8.013 8.013 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82a7.533 7.533 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
           </svg>
         `
-        : `<span class="game-cover-inner">${project.initials}</span>`
+        : project.useLinkedInIcon
+          ? `
+            <svg class="linkedin-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <rect x="0" y="0" width="64" height="64" rx="14" fill="#0A66C2"/>
+              <path d="M16 24.8h8.2v22.4H16zm4.1-8.8c2.6 0 4.7 2.1 4.7 4.7s-2.1 4.7-4.7 4.7-4.7-2.1-4.7-4.7 2.1-4.7 4.7-4.7zm9.5 8.8h7.9v3.1h.1c1.1-2.1 3.8-4.3 7.8-4.3 8.4 0 9.9 5.5 9.9 12.7v12.9h-8.2V35.6c0-3.1-.1-7.1-4.3-7.1-4.3 0-5 3.4-5 6.8v10.9h-8.2V24.8z" fill="#ffffff"/>
+            </svg>
+          `
+          : project.iconSrc
+            ? `<img class="game-cover-image" src="${project.iconSrc}" alt="${project.title} icon" />`
+            : `<span class="game-cover-inner">${project.initials}</span>`
+
+      const cardClasses = [
+        'game-card',
+        project.id === activeProject.id ? 'is-active' : '',
+        project.iconSrc ? 'has-image-cover' : '',
+        project.useGithubIcon || project.useLinkedInIcon ? 'has-icon-mark' : '',
+      ].filter(Boolean).join(' ')
 
       return `
         <button
           type="button"
-          class="game-card ${project.id === activeProject.id ? 'is-active' : ''}"
+          class="${cardClasses}"
           data-project-id="${project.id}"
           data-project-link="${project.link ?? ''}"
           aria-pressed="${project.id === activeProject.id}"
@@ -118,7 +161,7 @@ function renderProjectGrid(activeId: string) {
       <header class="topbar">
         <div class="gamer-card">
           <div class="avatar-wrap">
-            <div class="avatar">T</div>
+            <img class="avatar-image" src="${turnerProfile}" alt="Turner Inge" />
           </div>
           <div class="gamer-info">
             <div class="gamer-name-row">
@@ -144,6 +187,35 @@ function renderProjectGrid(activeId: string) {
             <div class="cover-title-block">
               <div class="cover-title">${activeProject.title}</div>
             </div>
+
+            <div class="feature-detail">
+              <div class="feature-icon ${activeProject.iconSrc ? 'has-image' : activeProject.useGithubIcon || activeProject.useLinkedInIcon ? 'has-icon-mark' : ''}">
+                ${activeProject.useGithubIcon
+                  ? `
+                    <svg class="feature-github-mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                      <path d="M8 0C3.58 0 0 3.58 0 8a8.013 8.013 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82a7.533 7.533 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+                    </svg>
+                  `
+                  : activeProject.useLinkedInIcon
+                    ? `
+                      <svg class="feature-linkedin-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                        <rect x="0" y="0" width="64" height="64" rx="14" fill="#0A66C2"/>
+                        <path d="M16 24.8h8.2v22.4H16zm4.1-8.8c2.6 0 4.7 2.1 4.7 4.7s-2.1 4.7-4.7 4.7-4.7-2.1-4.7-4.7 2.1-4.7 4.7-4.7zm9.5 8.8h7.9v3.1h.1c1.1-2.1 3.8-4.3 7.8-4.3 8.4 0 9.9 5.5 9.9 12.7v12.9h-8.2V35.6c0-3.1-.1-7.1-4.3-7.1-4.3 0-5 3.4-5 6.8v10.9h-8.2V24.8z" fill="#ffffff"/>
+                      </svg>
+                    `
+                    : activeProject.iconSrc
+                      ? `<img class="feature-icon-image" src="${activeProject.iconSrc}" alt="${activeProject.title} icon" />`
+                      : `<span class="feature-initials">${activeProject.initials}</span>`}
+              </div>
+
+              <div class="feature-text">
+                <p class="feature-tag">${activeProject.tag}</p>
+                <h2>${activeProject.title}</h2>
+                <p>${activeProject.subtitle}</p>
+              </div>
+            </div>
+
+            ${activeProject.link ? `<button type="button" class="launch-button" data-launch-link="${activeProject.link}">Launch project</button>` : ''}
           </article>
 
           <div class="carousel-strip">
@@ -172,12 +244,18 @@ function renderProjectGrid(activeId: string) {
             <div class="mini-title">Play Gears 5 now</div>
           </article>
 
-          <article class="mini-card controller-card">
-            <div class="controller-copy">
-              <div class="controller-title">ELITE SERIES 2</div>
-              <p>The world’s most advanced controller</p>
+          <article class="mini-card athlete-card" style="background-image: linear-gradient(135deg, rgba(8, 12, 18, 0.68), rgba(8, 12, 18, 0.2)), url('${turnerProfileAlt}');">
+            <div class="athlete-overlay">
+              <span class="athlete-badge">ATHLETE</span>
+              <div class="athlete-copy">
+                <div class="athlete-title">FOOTBALL</div>
+                <p>Competitive edge. Big-play energy. Relentless focus.</p>
+              </div>
+              <div class="athlete-metrics">
+                <span>POWER</span>
+                <div class="athlete-meter"><span></span></div>
+              </div>
             </div>
-            <div class="controller-figure"></div>
           </article>
         </section>
       </main>
@@ -189,8 +267,13 @@ function renderProjectGrid(activeId: string) {
     button.addEventListener('click', () => {
       const selectedId = button.dataset.projectId ?? projects[0].id
       renderProjectGrid(selectedId)
+    })
+  })
 
-      const link = button.dataset.projectLink
+  const launchButtons = app.querySelectorAll<HTMLButtonElement>('.launch-button')
+  launchButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const link = button.dataset.launchLink
       if (link) {
         window.open(link, '_blank', 'noopener,noreferrer')
       }
