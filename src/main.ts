@@ -2,6 +2,7 @@ import './style.css'
 import workoutsLogo from './assets/workoutslogo.png'
 import slicesLogo from './assets/sliceslogo.png'
 import pongLogo from './assets/ponglogo.svg'
+import blockShooterIcon from './assets/blockshootericon.svg'
 import resumeIcon from './assets/resumeicon.svg'
 import turnerProfile from './assets/turner-profile-alt.png'
 import turnerProfileAlt from './assets/turner-profile.png'
@@ -91,13 +92,15 @@ const projects: Project[] = [
     iconSrc: workoutsLogo,
   },
   {
-    id: 'halo',
-    title: 'HALO INFINITE',
+    id: 'block-shooter',
+    title: 'TINGE BLOCK SHOOTER',
     accent: '#7ec9ff',
-    tag: 'Featured',
-    label: 'My project',
-    subtitle: 'A bold experience built around immersive storytelling and polished interaction design.',
-    initials: 'HI',
+    tag: 'Arcade',
+    label: 'Shooter',
+    subtitle: 'A browser-based block shooter built around fast action, reaction time, and score chasing in a clean arcade presentation.',
+    initials: 'BS',
+    link: 'https://tingeblockshooter.netlify.app/',
+    iconSrc: blockShooterIcon,
   },
   {
     id: 'forza',
@@ -200,7 +203,7 @@ function renderProjectGrid(activeId: string) {
       <div class="resume-modal-backdrop" data-close-resume="true"></div>
       <div class="resume-modal-dialog" role="dialog" aria-modal="true" aria-label="Resume view">
         <button type="button" class="resume-close" aria-label="Close resume">×</button>
-        <iframe src="${resumePdfUrl}" title="Turner Inge resume"></iframe>
+        <iframe src="${resumePdfUrl}#page=1&view=FitH" title="Turner Inge resume"></iframe>
       </div>
     </div>
 
