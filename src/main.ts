@@ -2,6 +2,7 @@ import './style.css'
 import workoutsLogo from './assets/workoutslogo.png'
 import slicesLogo from './assets/sliceslogo.png'
 import pongLogo from './assets/ponglogo.svg'
+import resumeIcon from './assets/resumeicon.svg'
 import turnerProfile from './assets/turner-profile-alt.png'
 import turnerProfileAlt from './assets/turner-profile.png'
 
@@ -16,8 +17,11 @@ type Project = {
   link?: string
   useGithubIcon?: boolean
   useLinkedInIcon?: boolean
+  isResumeModal?: boolean
   iconSrc?: string
 }
+
+const resumePdfUrl = '/TurnerInge_Resume.pdf'
 
 const projects: Project[] = [
   {
@@ -63,6 +67,17 @@ const projects: Project[] = [
     initials: 'PG',
     link: 'https://tingepong.netlify.app/',
     iconSrc: pongLogo,
+  },
+  {
+    id: 'resume',
+    title: 'Resume',
+    accent: '#8ecae6',
+    tag: 'Profile',
+    label: 'Resume',
+    subtitle: 'View my resume, work history, and skills in a full-screen pop-up window without leaving the portfolio experience.',
+    initials: 'RV',
+    isResumeModal: true,
+    iconSrc: resumeIcon,
   },
   {
     id: 'workouts2',
@@ -181,6 +196,14 @@ function renderProjectGrid(activeId: string) {
     .join('')
 
   app.innerHTML = `
+    <div class="resume-modal hidden" aria-hidden="true">
+      <div class="resume-modal-backdrop" data-close-resume="true"></div>
+      <div class="resume-modal-dialog" role="dialog" aria-modal="true" aria-label="Resume view">
+        <button type="button" class="resume-close" aria-label="Close resume">×</button>
+        <iframe src="${resumePdfUrl}" title="Turner Inge resume"></iframe>
+      </div>
+    </div>
+
     <div class="xbox-home">
       <header class="topbar">
         <div class="gamer-card">
@@ -239,7 +262,7 @@ function renderProjectGrid(activeId: string) {
               </div>
             </div>
 
-            ${activeProject.link ? `<button type="button" class="launch-button" data-launch-link="${activeProject.link}">Launch project</button>` : ''}
+            ${(activeProject.link || activeProject.isResumeModal) ? `<button type="button" class="launch-button" data-launch-link="${activeProject.link ?? resumePdfUrl}" data-resume-modal="${activeProject.isResumeModal ? 'true' : 'false'}">Launch project</button>` : ''}
           </article>
 
           <div class="carousel-strip">
@@ -297,12 +320,45 @@ function renderProjectGrid(activeId: string) {
   const launchButtons = app.querySelectorAll<HTMLButtonElement>('.launch-button')
   launchButtons.forEach((button) => {
     button.addEventListener('click', () => {
+      const modalFlag = button.dataset.resumeModal === 'true'
       const link = button.dataset.launchLink
+
+      if (modalFlag) {
+        const modal = app.querySelector<HTMLDivElement>('.resume-modal')
+        if (modal) {
+          modal.classList.remove('hidden')
+          modal.setAttribute('aria-hidden', 'false')
+        }
+        return
+      }
+
       if (link) {
         window.open(link, '_blank', 'noopener,noreferrer')
       }
     })
   })
+
+  const resumeClose = app.querySelector<HTMLButtonElement>('.resume-close')
+  if (resumeClose) {
+    resumeClose.addEventListener('click', () => {
+      const modal = app.querySelector<HTMLDivElement>('.resume-modal')
+      if (modal) {
+        modal.classList.add('hidden')
+        modal.setAttribute('aria-hidden', 'true')
+      }
+    })
+  }
+
+  const resumeBackdrop = app.querySelector<HTMLDivElement>('[data-close-resume="true"]')
+  if (resumeBackdrop) {
+    resumeBackdrop.addEventListener('click', () => {
+      const modal = app.querySelector<HTMLDivElement>('.resume-modal')
+      if (modal) {
+        modal.classList.add('hidden')
+        modal.setAttribute('aria-hidden', 'true')
+      }
+    })
+  }
 }
 
 renderProjectGrid('github')
