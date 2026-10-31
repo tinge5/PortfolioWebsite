@@ -18,6 +18,7 @@ type Project = {
   link?: string
   useGithubIcon?: boolean
   useLinkedInIcon?: boolean
+  useStudyIcon?: boolean
   isResumeModal?: boolean
   iconSrc?: string
 }
@@ -103,6 +104,17 @@ const projects: Project[] = [
     iconSrc: blockShooterIcon,
   },
   {
+    id: 'tinge-studies',
+    title: 'TINGE STUDIES',
+    accent: '#c58bff',
+    tag: 'Learning',
+    label: 'Study tracker',
+    subtitle: 'A focused learning app for building habits, tracking progress, and staying consistent with long-term study goals.',
+    initials: 'TS',
+    link: 'https://tingestudies.onrender.com/',
+    useStudyIcon: true,
+  },
+  {
     id: 'forza',
     title: 'FORZA',
     accent: '#f4c042',
@@ -169,15 +181,22 @@ function renderProjectGrid(activeId: string) {
               <path d="M16 24.8h8.2v22.4H16zm4.1-8.8c2.6 0 4.7 2.1 4.7 4.7s-2.1 4.7-4.7 4.7-4.7-2.1-4.7-4.7 2.1-4.7 4.7-4.7zm9.5 8.8h7.9v3.1h.1c1.1-2.1 3.8-4.3 7.8-4.3 8.4 0 9.9 5.5 9.9 12.7v12.9h-8.2V35.6c0-3.1-.1-7.1-4.3-7.1-4.3 0-5 3.4-5 6.8v10.9h-8.2V24.8z" fill="#ffffff"/>
             </svg>
           `
-          : project.iconSrc
-            ? `<img class="game-cover-image" src="${project.iconSrc}" alt="${project.title} icon" />`
-            : `<span class="game-cover-inner">${project.initials}</span>`
+          : project.useStudyIcon
+            ? `
+              <svg class="study-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                <path d="M10 18.5 32 10l22 8.5v27L32 54l-22-8.5v-27Zm22 5.4L20 27.4v17L32 47.4 44 44.4v-17l-12-3.5Zm0-9.9L41.5 19l-9.5 3.5L22.5 19 32 13.9Z" fill="#f7f8ff"/>
+                <path d="M18 30.5c4.5 2.4 7.9 3.8 14 3.8 6.1 0 9.4-1.4 14-3.8v7.8c-4.6 2.8-8.1 4.2-14 4.2s-9.4-1.4-14-4.2v-7.8Z" fill="#ffb14d" opacity="0.95"/>
+              </svg>
+            `
+            : project.iconSrc
+              ? `<img class="game-cover-image" src="${project.iconSrc}" alt="${project.title} icon" />`
+              : `<span class="game-cover-inner">${project.initials}</span>`
 
       const cardClasses = [
         'game-card',
         project.id === activeProject.id ? 'is-active' : '',
         project.iconSrc ? 'has-image-cover' : '',
-        project.useGithubIcon || project.useLinkedInIcon ? 'has-icon-mark' : '',
+        project.useGithubIcon || project.useLinkedInIcon || project.useStudyIcon ? 'has-icon-mark' : '',
       ].filter(Boolean).join(' ')
 
       return `
@@ -253,9 +272,16 @@ function renderProjectGrid(activeId: string) {
                         <path d="M16 24.8h8.2v22.4H16zm4.1-8.8c2.6 0 4.7 2.1 4.7 4.7s-2.1 4.7-4.7 4.7-4.7-2.1-4.7-4.7 2.1-4.7 4.7-4.7zm9.5 8.8h7.9v3.1h.1c1.1-2.1 3.8-4.3 7.8-4.3 8.4 0 9.9 5.5 9.9 12.7v12.9h-8.2V35.6c0-3.1-.1-7.1-4.3-7.1-4.3 0-5 3.4-5 6.8v10.9h-8.2V24.8z" fill="#ffffff"/>
                       </svg>
                     `
-                    : activeProject.iconSrc
-                      ? `<img class="feature-icon-image" src="${activeProject.iconSrc}" alt="${activeProject.title} icon" />`
-                      : `<span class="feature-initials">${activeProject.initials}</span>`}
+                    : activeProject.useStudyIcon
+                      ? `
+                        <svg class="study-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                          <path d="M10 18.5 32 10l22 8.5v27L32 54l-22-8.5v-27Zm22 5.4L20 27.4v17L32 47.4 44 44.4v-17l-12-3.5Zm0-9.9L41.5 19l-9.5 3.5L22.5 19 32 13.9Z" fill="#f7f8ff"/>
+                          <path d="M18 30.5c4.5 2.4 7.9 3.8 14 3.8 6.1 0 9.4-1.4 14-3.8v7.8c-4.6 2.8-8.1 4.2-14 4.2s-9.4-1.4-14-4.2v-7.8Z" fill="#ffb14d" opacity="0.95"/>
+                        </svg>
+                      `
+                      : activeProject.iconSrc
+                        ? `<img class="feature-icon-image" src="${activeProject.iconSrc}" alt="${activeProject.title} icon" />`
+                        : `<span class="feature-initials">${activeProject.initials}</span>`}
               </div>
 
               <div class="feature-text">

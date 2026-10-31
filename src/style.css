@@ -476,7 +476,8 @@ button {
 }
 
 .github-mark,
-.linkedin-mark {
+.linkedin-mark,
+.study-mark {
   width: 62%;
   height: 62%;
   fill: #f5f7fa;
@@ -486,6 +487,11 @@ button {
 .feature-linkedin-mark {
   width: 76%;
   height: 76%;
+}
+
+.feature-icon .study-mark {
+  width: 72%;
+  height: 72%;
 }
 
 .game-title {
