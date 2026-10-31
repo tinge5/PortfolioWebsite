@@ -598,22 +598,22 @@ button {
 }
 
 .mini-card {
-  min-height: 138px;
-  border-radius: 16px;
+  min-height: 116px;
+  border-radius: 14px;
   background: rgba(27, 31, 38, 0.7);
   border: 1px solid rgba(255,255,255,0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 12px 14px;
+  padding: 10px 12px;
 }
 
 .bottom-row .mini-card,
 .bottom-row .athlete-card,
 .bottom-row .highlight-card,
 .bottom-row .pass-card {
-  min-height: 126px;
+  min-height: 110px;
 }
 
 .library-card {
@@ -706,6 +706,7 @@ button {
   padding: 0;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 108px;
 }
 
 .athlete-card::before {
