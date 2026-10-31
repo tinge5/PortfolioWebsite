@@ -15,6 +15,7 @@ type Project = {
   tag: string
   label: string
   subtitle: string
+  details?: string
   initials: string
   link?: string
   useGithubIcon?: boolean
@@ -110,7 +111,8 @@ const projects: Project[] = [
     accent: '#c58bff',
     tag: 'AI Learning',
     label: 'RAG AI study system',
-    subtitle: 'A RAG-powered AI study assistant that retrieves relevant material from uploaded files and answers questions using that context. It helps students study faster, stay organized, and review course content more effectively.',
+    subtitle: 'AI study assistant for uploading course files and asking questions from the material.',
+    details: 'This RAG-powered learning app lets users upload PDFs, documents, and other study materials, then asks questions using only the context from those files. It is designed to help students review course content faster, stay organized, and build a more guided study workflow grounded in their actual materials.',
     initials: 'TS',
     link: 'https://tingestudies.onrender.com/',
     iconSrc: tingeStudiesFavicon,
@@ -182,6 +184,15 @@ function renderProjectGrid(activeId: string) {
       </div>
     </div>
 
+    <div class="details-modal hidden" aria-hidden="true">
+      <div class="details-modal-backdrop" data-close-details="true"></div>
+      <div class="details-modal-dialog" role="dialog" aria-modal="true" aria-label="Project details">
+        <button type="button" class="details-close" aria-label="Close project details">×</button>
+        <div class="details-header">More details</div>
+        <div class="details-content">${(activeProject.details ?? activeProject.subtitle).replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+      </div>
+    </div>
+
     <div class="xbox-home">
       <header class="topbar">
         <div class="gamer-card">
@@ -243,7 +254,8 @@ function renderProjectGrid(activeId: string) {
               <div class="feature-text">
                 <p class="feature-tag">${activeProject.tag}</p>
                 <h2>${activeProject.title}</h2>
-                <p>${activeProject.subtitle}</p>
+                <p class="feature-summary">${activeProject.subtitle}</p>
+                ${(activeProject.details || activeProject.subtitle) ? `<button type="button" class="details-toggle" aria-label="More details about ${activeProject.title}">i</button>` : ''}
               </div>
             </div>
 
@@ -338,6 +350,42 @@ function renderProjectGrid(activeId: string) {
   if (resumeBackdrop) {
     resumeBackdrop.addEventListener('click', () => {
       const modal = app.querySelector<HTMLDivElement>('.resume-modal')
+      if (modal) {
+        modal.classList.add('hidden')
+        modal.setAttribute('aria-hidden', 'true')
+      }
+    })
+  }
+
+  const detailsToggle = app.querySelector<HTMLButtonElement>('.details-toggle')
+  if (detailsToggle) {
+    detailsToggle.addEventListener('click', () => {
+      const modal = app.querySelector<HTMLDivElement>('.details-modal')
+      const content = app.querySelector<HTMLDivElement>('.details-content')
+      if (modal && content) {
+        const activeProject = projects.find((project) => project.id === (app.querySelector<HTMLButtonElement>('.game-card.is-active')?.dataset.projectId ?? projects[0].id)) ?? projects[0]
+        content.textContent = activeProject.details ?? activeProject.subtitle
+        modal.classList.remove('hidden')
+        modal.setAttribute('aria-hidden', 'false')
+      }
+    })
+  }
+
+  const detailsClose = app.querySelector<HTMLButtonElement>('.details-close')
+  if (detailsClose) {
+    detailsClose.addEventListener('click', () => {
+      const modal = app.querySelector<HTMLDivElement>('.details-modal')
+      if (modal) {
+        modal.classList.add('hidden')
+        modal.setAttribute('aria-hidden', 'true')
+      }
+    })
+  }
+
+  const detailsBackdrop = app.querySelector<HTMLDivElement>('[data-close-details="true"]')
+  if (detailsBackdrop) {
+    detailsBackdrop.addEventListener('click', () => {
+      const modal = app.querySelector<HTMLDivElement>('.details-modal')
       if (modal) {
         modal.classList.add('hidden')
         modal.setAttribute('aria-hidden', 'true')
