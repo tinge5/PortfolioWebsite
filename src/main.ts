@@ -1,9 +1,10 @@
 import './style.css'
 import workoutsLogo from './assets/workoutslogo.png'
 import slicesLogo from './assets/sliceslogo.png'
-import pongLogo from './assets/ponglogo.svg'
 import blockShooterIcon from './assets/blockshootericon.svg'
 import resumeIcon from './assets/resumeicon.svg'
+import tingePongFavicon from './assets/tingepongfavicon.svg'
+import tingeStudiesFavicon from './assets/tingestudiesfavicon.svg'
 import turnerProfile from './assets/turner-profile-alt.png'
 import turnerProfileAlt from './assets/turner-profile.png'
 
@@ -68,7 +69,7 @@ const projects: Project[] = [
     subtitle: 'A fully hand-coded Pong-style arcade build created entirely by me using Brython in the browser. I built the gameplay loop, paddle controls, collision logic, score tracking, pause/resume interactions, and restart flow from scratch with custom JavaScript and Python logic running through Brython.',
     initials: 'PG',
     link: 'https://tingepong.netlify.app/',
-    iconSrc: pongLogo,
+    iconSrc: tingePongFavicon,
   },
   {
     id: 'resume',
@@ -112,7 +113,7 @@ const projects: Project[] = [
     subtitle: 'A RAG-powered AI study assistant that retrieves relevant material from uploaded files and answers questions using that context. It helps students study faster, stay organized, and review course content more effectively.',
     initials: 'TS',
     link: 'https://tingestudies.onrender.com/',
-    useStudyIcon: true,
+    iconSrc: tingeStudiesFavicon,
   },
   {
     id: 'forza',
