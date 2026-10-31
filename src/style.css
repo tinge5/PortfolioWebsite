@@ -598,49 +598,49 @@ button {
 }
 
 .mini-card {
-  min-height: 160px;
-  border-radius: 18px;
+  min-height: 138px;
+  border-radius: 16px;
   background: rgba(27, 31, 38, 0.7);
   border: 1px solid rgba(255,255,255,0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 14px 16px;
+  padding: 12px 14px;
 }
 
 .bottom-row .mini-card,
 .bottom-row .athlete-card,
 .bottom-row .highlight-card,
 .bottom-row .pass-card {
-  min-height: 150px;
+  min-height: 126px;
 }
 
 .library-card {
-  background: rgba(72, 75, 84, 0.7);
+  background: linear-gradient(135deg, rgba(255, 136, 51, 0.18), rgba(73, 82, 103, 0.78));
 }
 
 .mini-icon {
-  width: 58px;
-  height: 58px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
-  font-size: 1.6rem;
+  font-size: 1.35rem;
   color: #f6f8fb;
-  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  background: linear-gradient(135deg, rgba(255,148,64,0.25), rgba(255,255,255,0.04));
   border: 1px solid rgba(255,255,255,0.06);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .mini-title {
-  font-size: clamp(1.05rem, 1.4vw, 1.7rem);
-  line-height: 1.1;
+  font-size: clamp(0.95rem, 1.2vw, 1.35rem);
+  line-height: 1.15;
   font-weight: 700;
 }
 
 .highlight-card {
-  background: linear-gradient(145deg, rgba(104, 110, 121, 0.58), rgba(30, 36, 42, 0.76));
+  background: linear-gradient(145deg, rgba(255, 147, 42, 0.24), rgba(43, 52, 63, 0.8));
   justify-content: space-between;
 }
 
@@ -654,23 +654,23 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 0.4rem 0.7rem;
-  color: #edf4fb;
-  font-size: 0.72rem;
+  background: rgba(255, 145, 51, 0.18);
+  border: 1px solid rgba(255, 169, 87, 0.3);
+  padding: 0.35rem 0.7rem;
+  color: #ffe6c8;
+  font-size: 0.68rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .highlight-title {
-  font-size: clamp(1.3rem, 2vw, 2.2rem);
+  font-size: clamp(1.1rem, 1.75vw, 1.8rem);
   font-weight: 700;
   line-height: 1.1;
 }
 
 .pass-card {
-  background: linear-gradient(135deg, rgba(126, 151, 184, 0.32), rgba(20, 24, 39, 0.7));
+  background: linear-gradient(135deg, rgba(255, 128, 43, 0.22), rgba(57, 34, 15, 0.75), rgba(22, 26, 35, 0.8));
   justify-content: center;
   gap: 12px;
 }
