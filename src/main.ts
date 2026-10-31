@@ -109,7 +109,7 @@ const projects: Project[] = [
     accent: '#c58bff',
     tag: 'AI Learning',
     label: 'RAG AI study system',
-    subtitle: 'A RAG-powered AI study assistant that retrieves relevant content from uploaded course materials and uses that context to answer questions, generate study prompts, and support more focused learning. It gives students a faster, more organized way to review material while keeping responses grounded in their actual files.',
+    subtitle: 'A RAG-powered AI study assistant that retrieves relevant material from uploaded files and answers questions using that context. It helps students study faster, stay organized, and review course content more effectively.',
     initials: 'TS',
     link: 'https://tingestudies.onrender.com/',
     useStudyIcon: true,
