@@ -5,6 +5,7 @@ import blockShooterIcon from './assets/blockshootericon.svg'
 import resumeIcon from './assets/resumeicon.svg'
 import tingePongFavicon from './assets/tingepongfavicon.svg'
 import tingeStudiesFavicon from './assets/tingestudiesfavicon.svg'
+import nflPredictionsPreview from './assets/nfl-predictions-preview.png'
 import turnerProfile from './assets/turner-profile-alt.png'
 import turnerProfileAlt from './assets/turner-profile.png'
 
@@ -96,6 +97,18 @@ const projects: Project[] = [
     initials: 'W2',
     link: 'https://workouts2-0.onrender.com/',
     iconSrc: workoutsLogo,
+  },
+  {
+    id: 'nfl-predictor',
+    title: 'NFL MATCHUP PREDICTOR',
+    accent: '#ffb14d',
+    tag: 'ML Project',
+    label: 'Prediction model',
+    subtitle: 'A machine learning model that predicts NFL game winners using team performance trends and matchup-level features.',
+    details: 'This project uses a binary classification pipeline to estimate which team is more likely to win an NFL matchup based on season-level team performance data. I aggregated play-by-play data into game-level features, removed outcome-leaking variables like points and touchdowns, then trained a logistic regression model to identify the strongest predictive signals. The final model achieved roughly 66% accuracy with an AUC of 0.733, showing that matchup patterns like turnovers, yards allowed, and efficiency metrics can be used to make reliable predictions. The project includes model evaluation, confusion matrix analysis, ROC curve visualization, and prediction outputs for generated matchups, making it a strong example of data cleaning, feature engineering, and ML evaluation in a real-world sports context.',
+    initials: 'NFL',
+    link: 'https://github.com/tinge5/finalProjectML',
+    iconSrc: nflPredictionsPreview,
   },
   {
     id: 'block-shooter',
