@@ -5,7 +5,7 @@ import blockShooterIcon from './assets/blockshootericon.svg'
 import resumeIcon from './assets/resumeicon.svg'
 import tingePongFavicon from './assets/tingepongfavicon.svg'
 import tingeStudiesFavicon from './assets/tingestudiesfavicon.svg'
-import nflPredictionsPreview from './assets/nfl-predictions-preview.png'
+import nflPredictorIcon from './assets/nfl-predictor-icon.svg'
 import turnerProfile from './assets/turner-profile-alt.png'
 import turnerProfileAlt from './assets/turner-profile.png'
 
@@ -108,7 +108,7 @@ const projects: Project[] = [
     details: 'This project uses a binary classification pipeline to estimate which team is more likely to win an NFL matchup based on season-level team performance data. I aggregated play-by-play data into game-level features, removed outcome-leaking variables like points and touchdowns, then trained a logistic regression model to identify the strongest predictive signals. The final model achieved roughly 66% accuracy with an AUC of 0.733, showing that matchup patterns like turnovers, yards allowed, and efficiency metrics can be used to make reliable predictions. The project includes model evaluation, confusion matrix analysis, ROC curve visualization, and prediction outputs for generated matchups, making it a strong example of data cleaning, feature engineering, and ML evaluation in a real-world sports context.',
     initials: 'NFL',
     link: 'https://github.com/tinge5/finalProjectML',
-    iconSrc: nflPredictionsPreview,
+    iconSrc: nflPredictorIcon,
   },
   {
     id: 'block-shooter',
@@ -197,7 +197,7 @@ function renderProjectGrid(activeId: string) {
       <div class="resume-modal-backdrop" data-close-resume="true"></div>
       <div class="resume-modal-dialog" role="dialog" aria-modal="true" aria-label="Resume view">
         <button type="button" class="resume-close" aria-label="Close resume">×</button>
-        <iframe src="${resumePdfUrl}#page=1&view=FitH" title="Turner Inge resume"></iframe>
+        <iframe src="${resumePdfUrl}" title="Turner Inge resume"></iframe>
       </div>
     </div>
 
